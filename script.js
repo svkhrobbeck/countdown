@@ -7,15 +7,11 @@ const nextYearDate = new Date(`01.01.${nextYear}`);
 const nextYearTime = nextYearDate.getTime();
 let intervalId = 0;
 
-const getZero = (num) => {
-  return num < 10 ? `0${num}` : num;
-};
-
 const updateTitle = (days, hours, minutes, seconds) => {
-  const day = days ? `${getZero(days)} kun,` : "";
+  const day = days ? `${days} kun,` : "";
   const hour = hours ? `${hours} soat,` : "";
-  const minute = minutes ? `${getZero(minutes)} daqiqa` : "";
-  const second = seconds ? `va ${getZero(seconds)} soniya` : "";
+  const minute = minutes ? `${minutes} daqiqa` : "";
+  const second = seconds ? `va ${seconds} soniya` : "";
 
   const str = `${nextYear}-yil kirib kelishiga ${day} ${hour} ${minute} ${second} qoldi`;
   elTitle.textContent = str;
