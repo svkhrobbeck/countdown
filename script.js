@@ -8,8 +8,8 @@ const nextYearTime = nextYearDate.getTime();
 let intervalId = 0;
 
 const updateTitle = (days, hours, minutes, seconds) => {
-  const day = days ? `${days} kun,` : "";
-  const hour = hours ? `${hours} soat,` : "";
+  const day = days ? `${days} kun${hours ? "," : ""}` : "";
+  const hour = hours ? `${hours} soat${minutes ? "," : ""}` : "";
   const minute = minutes ? `${minutes} daqiqa` : "";
   const second = seconds ? `va ${seconds} soniya` : "";
 
