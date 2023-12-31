@@ -2,12 +2,9 @@
 const elTitle = document.getElementById("title");
 
 // vars
-const nextYear = new Date().getFullYear() + 1;
-const nextYearDate = new Date(`01.01.${nextYear}`);
-const nextYearTime = nextYearDate.getTime();
 let intervalId = 0;
 
-const updateTitle = (days, hours, minutes, seconds) => {
+const updateTitle = (nextYear, days, hours, minutes, seconds) => {
   const day = days ? `${days} kun${hours ? "," : ""}` : "";
   const hour = hours ? `${hours} soat${minutes ? "," : ""}` : "";
   const minute = minutes ? `${minutes} daqiqa` : "";
@@ -18,13 +15,16 @@ const updateTitle = (days, hours, minutes, seconds) => {
 };
 
 const startCountdown = () => {
+  const nextYear = new Date().getFullYear() + 1;
+  const nextYearTime = new Date(`01.01.${nextYear}`);
+
   let days = 365;
   let hours = 24;
   let minutes = 60;
   let seconds = 60;
 
   intervalId = setInterval(() => {
-    const residualTime = nextYearDate - Date.now();
+    const residualTime = nextYearTime - Date.now();
 
     days = Math.floor(residualTime / (1000 * 60 * 60 * 24));
     hours = Math.floor((residualTime / (1000 * 60 * 60)) % 24);
@@ -35,7 +35,7 @@ const startCountdown = () => {
       elTitle.textContent = "yangi yil kirib keldi!";
       clearInterval(intervalId);
     } else {
-      updateTitle(days, hours, minutes, seconds);
+      updateTitle(nextYear, days, hours, minutes, seconds);
     }
   }, 1000);
 };
