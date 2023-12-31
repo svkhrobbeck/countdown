@@ -8,7 +8,7 @@ const updateTitle = (nextYear, days, hours, minutes, seconds) => {
   const day = days ? `${days} kun${hours ? "," : ""}` : "";
   const hour = hours ? `${hours} soat${minutes ? "," : ""}` : "";
   const minute = minutes ? `${minutes} daqiqa` : "";
-  const second = seconds ? `va ${seconds} soniya` : "";
+  const second = `va ${seconds} soniya`;
 
   const str = `${nextYear}-yil kirib kelishiga ${day} ${hour} ${minute} ${second} qoldi`;
   elTitle.textContent = str;
