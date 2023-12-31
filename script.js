@@ -36,7 +36,7 @@ const startCountdown = () => {
     seconds = Math.floor((residualTime / 1000) % 60);
 
     if (residualTime < 1) {
-      updateTitle("yangi yil kirib keldi!");
+      elTitle.textContent = "yangi yil kirib keldi!";
       clearInterval(intervalId);
     } else {
       updateTitle(days, hours, minutes, seconds);
