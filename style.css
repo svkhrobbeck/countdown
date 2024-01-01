@@ -81,6 +81,10 @@ body {
   font-size: 45px;
 }
 
+.title .left {
+  color: red;
+}
+
 .fade {
   animation-name: fade-anim;
   animation-duration: 2s;
