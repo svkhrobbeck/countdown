@@ -4,6 +4,8 @@ const elTitle = document.getElementById("title");
 // vars
 let intervalId = 0;
 
+const getNumber = num => (isNaN(num) ? 0 : Number(num));
+
 const updateTitle = (nextYear, days, hours, minutes, seconds) => {
   const day = days ? `${days} kun` : `<span class="left">0 kun</span>`;
   const hour = hours ? `${hours} soat` : `<span class="left">0 soat</span>`;
@@ -17,7 +19,7 @@ const updateTitle = (nextYear, days, hours, minutes, seconds) => {
 const startCountdown = () => {
   const newYear = new Date().getFullYear();
   const nextYear = newYear + 1;
-  const newYearTime = new Date(`12.31.${newYear}`);
+  const newYearTime = new Date(`12.31.${newYear} 00:00:00`).getTime();
 
   let days = 365;
   let hours = 24;
@@ -33,7 +35,14 @@ const startCountdown = () => {
     seconds = Math.floor((residualTime / 1000) % 60);
 
     if (residualTime < 1) elTitle.textContent = `${nextYear} yil kirib keldi!`;
-    else updateTitle(nextYear, days, hours, minutes, seconds);
+    else
+      updateTitle(
+        getNumber(nextYear),
+        getNumber(days),
+        getNumber(hours),
+        getNumber(minutes),
+        getNumber(seconds)
+      );
   }, 1000);
 };
 
